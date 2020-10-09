@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Tile/8.png" type="Texture" id=1]
 [ext_resource path="res://Tile/4.png" type="Texture" id=2]
@@ -17,9 +17,14 @@
 [ext_resource path="res://Tile/9.png" type="Texture" id=15]
 [ext_resource path="res://Tile/12.png" type="Texture" id=16]
 [ext_resource path="res://Tile/15.png" type="Texture" id=17]
-[ext_resource path="res://Objects/Crate.png" type="Texture" id=18]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/Plataforma.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Objects/Mushroom_1.png" type="Texture" id=21]
+[ext_resource path="res://scripts/CogumeloRosa.gd" type="Script" id=22]
+[ext_resource path="res://scripts/CogumeloLaranja.gd" type="Script" id=23]
+[ext_resource path="res://scripts/Fase1.gd" type="Script" id=24]
+[ext_resource path="res://scenes/CogumeloLaranja.tscn" type="PackedScene" id=25]
+[ext_resource path="res://scenes/CogumeloRosa.tscn" type="PackedScene" id=26]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 127, 93, 0, 93, 0, 0, 127, 0 )
@@ -351,20 +356,38 @@ points = PoolVector2Array( 128, 32, 0, 32, 0, 0, 128, 0 )
 } ]
 16/z_index = 0
 
+[sub_resource type="DynamicFontData" id=11]
+font_path = "res://font/Marsha DEMO.otf"
+
+[sub_resource type="DynamicFont" id=12]
+size = 60
+font_data = SubResource( 11 )
+
+[sub_resource type="Animation" id=13]
+resource_name = "movimento"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3070, 524 ), Vector2( 3090, 524 ), Vector2( 3100, 524 ), Vector2( 3090, 524 ), Vector2( 3070, 524 ) ]
+}
+
 [node name="Fase1" type="Node2D"]
+script = ExtResource( 24 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 10 )
 cell_size = Vector2( 128, 128 )
 format = 1
 tile_data = PoolIntArray( 262153, 14, 0, 262154, 15, 0, 262155, 0, 0, 327680, 1, 0, 327681, 2, 0, 327682, 2, 0, 327683, 2, 0, 327684, 2, 0, 327685, 2, 0, 327686, 2, 0, 327687, 3, 0, 327694, 1, 0, 327695, 2, 0, 327696, 2, 0, 327697, 2, 0, 327698, 2, 0, 327699, 2, 0, 327700, 2, 0, 327701, 2, 0 )
-
-[node name="Node2D" parent="TileMap" instance=ExtResource( 20 )]
-position = Vector2( 2979.72, 524.152 )
-
-[node name="box" type="Sprite" parent="."]
-position = Vector2( 562.603, 589.078 )
-texture = ExtResource( 18 )
 
 [node name="Player" parent="." instance=ExtResource( 19 )]
 position = Vector2( 52.3178, 573.353 )
@@ -382,6 +405,65 @@ limit_bottom = 0
 motion_scale = Vector2( 0.25, 1 )
 
 [node name="background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 712.554, 17.4258 )
+position = Vector2( 597.077, 385.057 )
 scale = Vector2( 1.76092, 0.799995 )
 texture = ExtResource( 5 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="pontos" type="Label" parent="HUD"]
+anchor_left = 0.057
+anchor_top = 0.07
+anchor_right = 0.241
+anchor_bottom = 0.132
+margin_left = 0.0399933
+margin_top = 0.239998
+margin_right = 0.519989
+margin_bottom = -0.375999
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.00784314, 0, 1, 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mushroom_1" type="Sprite" parent="HUD/pontos"]
+position = Vector2( 39.0382, 29.9554 )
+scale = Vector2( 0.740247, 0.775795 )
+texture = ExtResource( 21 )
+
+[node name="CogumeloRosa" parent="." instance=ExtResource( 26 )]
+position = Vector2( 552.162, 619.346 )
+script = ExtResource( 22 )
+
+[node name="CogumeloRosa2" parent="." instance=ExtResource( 26 )]
+position = Vector2( 1332.22, 492.686 )
+script = ExtResource( 22 )
+
+[node name="CogumeloRosa3" parent="." instance=ExtResource( 26 )]
+position = Vector2( 2533, 620.392 )
+script = ExtResource( 22 )
+
+[node name="CogumeloLaranja" parent="." instance=ExtResource( 25 )]
+position = Vector2( 1943.91, 620.919 )
+script = ExtResource( 23 )
+
+[node name="Plataforma" parent="." instance=ExtResource( 20 )]
+position = Vector2( 3080.34, 524 )
+
+[node name="CogumeloLaranja2" parent="Plataforma" instance=ExtResource( 25 )]
+position = Vector2( 3.11157, -65.5928 )
+script = ExtResource( 23 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Plataforma"]
+autoplay = "movimento"
+anims/movimento = SubResource( 13 )
+[connection signal="body_entered" from="CogumeloRosa" to="CogumeloRosa" method="_on_CogumeloRosa_body_entered"]
+[connection signal="body_entered" from="CogumeloRosa2" to="CogumeloRosa2" method="_on_CogumeloRosa_body_entered"]
+[connection signal="body_entered" from="CogumeloRosa3" to="CogumeloRosa3" method="_on_CogumeloRosa_body_entered"]
+[connection signal="body_entered" from="CogumeloLaranja" to="CogumeloLaranja" method="_on_CogumeloLaranja_body_entered"]
+[connection signal="body_entered" from="Plataforma/CogumeloLaranja2" to="Plataforma/CogumeloLaranja2" method="_on_CogumeloLaranja_body_entered"]
