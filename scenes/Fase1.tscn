@@ -377,7 +377,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 3070, 524 ), Vector2( 3090, 524 ), Vector2( 3100, 524 ), Vector2( 3090, 524 ), Vector2( 3070, 524 ) ]
+"values": [ Vector2( 3070, 524 ), Vector2( 3100, 524 ), Vector2( 3130, 524 ), Vector2( 3100, 524 ), Vector2( 3070, 524 ) ]
 }
 
 [node name="Fase1" type="Node2D"]
@@ -390,12 +390,11 @@ format = 1
 tile_data = PoolIntArray( 262153, 14, 0, 262154, 15, 0, 262155, 0, 0, 327680, 1, 0, 327681, 2, 0, 327682, 2, 0, 327683, 2, 0, 327684, 2, 0, 327685, 2, 0, 327686, 2, 0, 327687, 3, 0, 327694, 1, 0, 327695, 2, 0, 327696, 2, 0, 327697, 2, 0, 327698, 2, 0, 327699, 2, 0, 327700, 2, 0, 327701, 2, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 19 )]
-position = Vector2( 52.3178, 573.353 )
+position = Vector2( 242.436, 572.648 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 1958.21, -631.896 )
+position = Vector2( 1545.02, -759.031 )
 current = true
-limit_left = 0
 limit_top = 0
 limit_bottom = 0
 
@@ -405,8 +404,13 @@ limit_bottom = 0
 motion_scale = Vector2( 0.25, 1 )
 
 [node name="background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 597.077, 385.057 )
-scale = Vector2( 1.76092, 0.799995 )
+position = Vector2( 797.556, 384 )
+scale = Vector2( 2.0696, 0.799995 )
+texture = ExtResource( 5 )
+
+[node name="background2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 3446.66, 384 )
+scale = Vector2( 2.0696, 0.799995 )
 texture = ExtResource( 5 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -453,7 +457,7 @@ position = Vector2( 1943.91, 620.919 )
 script = ExtResource( 23 )
 
 [node name="Plataforma" parent="." instance=ExtResource( 20 )]
-position = Vector2( 3080.34, 524 )
+position = Vector2( 3070, 524 )
 
 [node name="CogumeloLaranja2" parent="Plataforma" instance=ExtResource( 25 )]
 position = Vector2( 3.11157, -65.5928 )
