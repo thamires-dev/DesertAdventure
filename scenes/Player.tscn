@@ -135,15 +135,15 @@ animations = [ {
 "name": "dead",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 93 ), ExtResource( 108 ), ExtResource( 114 ), ExtResource( 105 ), ExtResource( 94 ), ExtResource( 102 ), ExtResource( 96 ), ExtResource( 78 ), ExtResource( 92 ), ExtResource( 90 ), ExtResource( 70 ), ExtResource( 87 ), ExtResource( 104 ), ExtResource( 83 ), ExtResource( 89 ), ExtResource( 106 ), ExtResource( 76 ), ExtResource( 74 ), ExtResource( 77 ), ExtResource( 72 ) ],
-"loop": true,
-"name": "walk",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 64 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 63 ), ExtResource( 68 ), ExtResource( 116 ), ExtResource( 112 ), ExtResource( 98 ), ExtResource( 84 ), ExtResource( 99 ), ExtResource( 95 ), ExtResource( 79 ), ExtResource( 109 ), ExtResource( 100 ), ExtResource( 86 ), ExtResource( 101 ), ExtResource( 73 ), ExtResource( 91 ), ExtResource( 81 ) ],
 "loop": true,
 "name": "run",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 93 ), ExtResource( 108 ), ExtResource( 114 ), ExtResource( 105 ), ExtResource( 94 ), ExtResource( 102 ), ExtResource( 96 ), ExtResource( 78 ), ExtResource( 92 ), ExtResource( 90 ), ExtResource( 70 ), ExtResource( 87 ), ExtResource( 104 ), ExtResource( 83 ), ExtResource( 89 ), ExtResource( 106 ), ExtResource( 76 ), ExtResource( 74 ), ExtResource( 77 ), ExtResource( 72 ) ],
+"loop": true,
+"name": "walk",
+"speed": 15.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -153,18 +153,18 @@ extents = Vector2( 150.284, 220.153 )
 scale = Vector2( 0.3, 0.3 )
 script = ExtResource( 117 )
 
-[node name="Lolla" type="AnimatedSprite" parent="."]
+[node name="sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
-frame = 5
+frame = 12
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 13.207, 3.62726 )
 shape = SubResource( 2 )
 
-[node name="RayCastRight" type="RayCast2D" parent="."]
+[node name="RayD" type="RayCast2D" parent="."]
 position = Vector2( 62.6767, 174.217 )
 
-[node name="RayCastLeft" type="RayCast2D" parent="."]
+[node name="RayE" type="RayCast2D" parent="."]
 position = Vector2( -0.765788, 174.169 )

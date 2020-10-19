@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Tile/8.png" type="Texture" id=1]
 [ext_resource path="res://Tile/4.png" type="Texture" id=2]
@@ -17,11 +17,11 @@
 [ext_resource path="res://Tile/9.png" type="Texture" id=15]
 [ext_resource path="res://Tile/12.png" type="Texture" id=16]
 [ext_resource path="res://Tile/15.png" type="Texture" id=17]
+[ext_resource path="res://scenes/Zumbi-Male.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scenes/Plataforma.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Objects/Mushroom_1.png" type="Texture" id=21]
-[ext_resource path="res://scripts/CogumeloRosa.gd" type="Script" id=22]
-[ext_resource path="res://scripts/CogumeloLaranja.gd" type="Script" id=23]
+[ext_resource path="res://scenes/Zumbi-Female.tscn" type="PackedScene" id=22]
 [ext_resource path="res://scripts/Fase1.gd" type="Script" id=24]
 [ext_resource path="res://scenes/CogumeloLaranja.tscn" type="PackedScene" id=25]
 [ext_resource path="res://scenes/CogumeloRosa.tscn" type="PackedScene" id=26]
@@ -363,8 +363,21 @@ font_path = "res://font/Marsha DEMO.otf"
 size = 60
 font_data = SubResource( 11 )
 
-[sub_resource type="Animation" id=13]
-resource_name = "movimento"
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.219608, 0.529412, 0.0901961, 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.576471, 0.0392157, 0.0392157, 1 )
+
+[sub_resource type="DynamicFontData" id=15]
+font_path = "res://font/Marsha DEMO.otf"
+
+[sub_resource type="DynamicFont" id=16]
+size = 150
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 15 )
+
+[sub_resource type="Animation" id=17]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -387,7 +400,7 @@ script = ExtResource( 24 )
 tile_set = SubResource( 10 )
 cell_size = Vector2( 128, 128 )
 format = 1
-tile_data = PoolIntArray( 262153, 14, 0, 262154, 15, 0, 262155, 0, 0, 327680, 1, 0, 327681, 2, 0, 327682, 2, 0, 327683, 2, 0, 327684, 2, 0, 327685, 2, 0, 327686, 2, 0, 327687, 3, 0, 327694, 1, 0, 327695, 2, 0, 327696, 2, 0, 327697, 2, 0, 327698, 2, 0, 327699, 2, 0, 327700, 2, 0, 327701, 2, 0 )
+tile_data = PoolIntArray( 131104, 2, 0, 196639, 2, 0, 196640, 5, 0, 196641, 2, 0, 262153, 14, 0, 262154, 15, 0, 262155, 0, 0, 262174, 2, 0, 262175, 5, 0, 262176, 5, 0, 262177, 5, 0, 262178, 2, 0, 262184, 2, 0, 327680, 1, 0, 327681, 2, 0, 327682, 2, 0, 327683, 2, 0, 327684, 2, 0, 327685, 2, 0, 327686, 2, 0, 327687, 3, 0, 327694, 1, 0, 327695, 2, 0, 327696, 2, 0, 327697, 2, 0, 327698, 2, 0, 327699, 2, 0, 327700, 2, 0, 327701, 3, 0, 327706, 1, 0, 327707, 2, 0, 327708, 2, 0, 327709, 2, 0, 327710, 5, 0, 327711, 5, 0, 327712, 5, 0, 327713, 5, 0, 327714, 5, 0, 327715, 2, 0, 327716, 2, 0, 327717, 2, 0, 327718, 2, 0, 327719, 2, 0, 327720, 5, 0, 327721, 2, 0, 327722, 2, 0, 327723, 2, 0, 327724, 3, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 19 )]
 position = Vector2( 242.436, 572.648 )
@@ -440,34 +453,74 @@ position = Vector2( 39.0382, 29.9554 )
 scale = Vector2( 0.740247, 0.775795 )
 texture = ExtResource( 21 )
 
+[node name="ProgressBar" type="ProgressBar" parent="HUD"]
+anchor_left = 0.719
+anchor_top = 0.076
+anchor_right = 0.887
+anchor_bottom = 0.131
+margin_left = -0.201172
+margin_top = 1.05912
+margin_right = -0.241089
+margin_bottom = 0.819115
+custom_styles/fg = SubResource( 13 )
+custom_styles/bg = SubResource( 14 )
+value = 100.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GAMEOVER" type="Label" parent="HUD"]
+anchor_left = 0.202
+anchor_top = 0.128
+anchor_right = 0.843
+anchor_bottom = 0.824
+margin_left = -0.0214233
+margin_top = 0.332169
+margin_right = -0.501465
+margin_bottom = -0.195862
+custom_fonts/font = SubResource( 16 )
+custom_colors/font_color = Color( 0, 0.717647, 0.968627, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "GAME
+OVER!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CogumeloRosa" parent="." instance=ExtResource( 26 )]
 position = Vector2( 552.162, 619.346 )
-script = ExtResource( 22 )
 
 [node name="CogumeloRosa2" parent="." instance=ExtResource( 26 )]
 position = Vector2( 1332.22, 492.686 )
-script = ExtResource( 22 )
 
 [node name="CogumeloRosa3" parent="." instance=ExtResource( 26 )]
 position = Vector2( 2533, 620.392 )
-script = ExtResource( 22 )
-
-[node name="CogumeloLaranja" parent="." instance=ExtResource( 25 )]
-position = Vector2( 1943.91, 620.919 )
-script = ExtResource( 23 )
 
 [node name="Plataforma" parent="." instance=ExtResource( 20 )]
 position = Vector2( 3070, 524 )
 
 [node name="CogumeloLaranja2" parent="Plataforma" instance=ExtResource( 25 )]
 position = Vector2( 3.11157, -65.5928 )
-script = ExtResource( 23 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Plataforma"]
 autoplay = "movimento"
-anims/movimento = SubResource( 13 )
-[connection signal="body_entered" from="CogumeloRosa" to="CogumeloRosa" method="_on_CogumeloRosa_body_entered"]
-[connection signal="body_entered" from="CogumeloRosa2" to="CogumeloRosa2" method="_on_CogumeloRosa_body_entered"]
-[connection signal="body_entered" from="CogumeloRosa3" to="CogumeloRosa3" method="_on_CogumeloRosa_body_entered"]
-[connection signal="body_entered" from="CogumeloLaranja" to="CogumeloLaranja" method="_on_CogumeloLaranja_body_entered"]
-[connection signal="body_entered" from="Plataforma/CogumeloLaranja2" to="Plataforma/CogumeloLaranja2" method="_on_CogumeloLaranja_body_entered"]
+anims/movimento = SubResource( 17 )
+
+[node name="Zumbi-Female" parent="." instance=ExtResource( 22 )]
+position = Vector2( 793.197, 586.161 )
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Zumbi-Male" parent="." instance=ExtResource( 18 )]
+position = Vector2( 2367.56, 594.637 )
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Zumbi-Female2" parent="." instance=ExtResource( 22 )]
+position = Vector2( 4616.49, 586.555 )
+scale = Vector2( 0.2, 0.2 )
+
+[node name="CogumeloRosa4" parent="." instance=ExtResource( 26 )]
+position = Vector2( 5187.33, 492.005 )
